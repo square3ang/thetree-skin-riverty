@@ -226,11 +226,13 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           </div>
         <%}%>
         <%if(page.viewName === 'history') {%><%-include('./components/fromSelector')%><%}%>
-        <%if(typeof contentName !== 'undefined') {%>
-          <%-include(path.join(__dirname, `views/${contentName}`))%>
-        <%} else if(typeof contentHtml !== 'undefined') {%>
-          <%-contentHtml%>
-        <%}%>
+        <div id="content-body">
+          <%if(typeof contentName !== 'undefined') {%>
+            <%-include(path.join(__dirname, `views/${contentName}`))%>
+          <%} else if(typeof contentHtml !== 'undefined') {%>
+            <%-contentHtml%>
+          <%}%>
+        </div>
         <%if(page.viewName === 'license') {%>
         <div>
           <h2>Liberty skin license</h2>
