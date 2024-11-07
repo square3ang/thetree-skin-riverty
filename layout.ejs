@@ -1,0 +1,276 @@
+<%
+const requestable = page.data.editable === true && page.data.edit_acl_message && page.viewName !== 'notfound';
+if(!global.libertySkinLicense) {
+  global.libertySkinLicense = fs.readFileSync(`./skins/${skin}/LICENSE`).toString();
+}
+%>
+<script>
+window.requestable = <%=JSON.stringify(requestable)%>;
+</script>
+<script src="/skins/<%=skin%>/js/main.js"></script>
+
+<div class="Liberty">
+  <div id="top"></div>
+  <div class="nav-wrapper" :class="{ 'navbar-fixed-top': $store.state.localConfig['liberty.fixed_navbar'] }">
+    <nav class="navbar navbar-dark">
+      <a class="navbar-brand" href="/"><%=config.logo_text%></a>
+      <ul class="nav navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/w/test"><span class="fa fa-refresh"></span><span class="hide-title">최근 변경</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/RecentDiscuss"><span class="fa fa-comments"></span><span class="hide-title">최근 토론</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/random"><span class="fa fa-random"></span><span class="hide-title">임의 문서</span></a>
+        </li>
+        <li class="nav-item" x-data="{ open: false }">
+          <div class="dropdown">
+            <a class="nav-link dropdown-toggle dropdown-toggle-fix" href="#" @click.prevent="open = !open">
+              <span class="fa fa-gear"></span><span class="hide-title">도구</span>
+            </a>
+            <div class="open" x-cloak x-show="open" @click="open = false" @click.outside="open = false">
+              <div class="dropdown-menu" role="menu">
+                <a href="/NeededPages" class="dropdown-item">작성이 필요한 문서</a>
+                <a href="/OrphanedPages" class="dropdown-item">고립된 문서</a>
+                <a href="/UncategorizedPages" class="dropdown-item">분류가 되지 않은 문서</a>
+                <a href="/OldPages" class="dropdown-item">편집된 지 오래된 문서</a>
+                <a href="/ShortestPages" class="dropdown-item">내용이 짧은 문서</a>
+                <a href="/LongestPages" class="dropdown-item">내용이 긴 문서</a>
+                <a href="/BlockHistory" class="dropdown-item">차단 내역</a>
+                <a href="/RandomPage" class="dropdown-item">RandomPage</a>
+                <a href="/Upload" class="dropdown-item">파일 올리기</a>
+                <a href="/License" class="dropdown-item">라이선스</a>
+                <%if(session.menus.length) {%>
+                <div class="dropdown-divider"></div>
+                <%for(let m of session.menus) {%>
+                <a href="<%=m.l%>" class="dropdown-item"><%=m.t%></a>
+                <%}%>
+                <%}%>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="navbar-login" x-data="{ open: false }">
+        <div class="dropdown login-menu">
+          <a id="login-menu" class="dropdown-toggle" type="button" @click="open = !open">
+            <%if(session.gravatar_url) {%>
+              <img class="profile-img" src="<%=session.gravatar_url%>">
+            <%} else {%>
+              <span class="fa fa-user"></span>
+            <%}%>
+          </a>
+          <div class="open" x-cloak x-show="open" @click="open = false" @click.outside="open = false">
+            <div class="dropdown-menu dropdown-menu-right login-dropdown-menu">
+              <%if(session.account.type === 1) {%>
+              <div class="username dropdown-item">
+                <b><%=session.account.name%></b><br>Member
+              </div>
+              <%} else {%>
+              <div class="username dropdown-item">
+                <b><%=session.account.name%></b><br>Please login!
+              </div>
+              <%}%>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item" @click.prevent="openSettingModal">설정</a>
+              <a x-show="$store.state.currentTheme === 'light'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'dark')">다크 테마로</a>
+              <a x-show="$store.state.currentTheme === 'dark'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'light')">라이트 테마로</a>
+              <div class="dropdown-divider"></div>
+              <%if(session.account_type === 1) {%>
+                <a to="/member/mypage" class="dropdown-item">내 정보</a>
+                <a :to="doc_action_link(user_doc($store.state.session.account.name), 'w')" class="dropdown-item">내 사용자 문서</a>
+                <a to="/member/starred_documents" class="dropdown-item">내 문서함</a>
+                <div class="dropdown-divider"></div>
+              <%}%>
+              <%if(session.account.uuid) {%>
+                <nuxt-link class="dropdown-item" :to="contribution_link($store.state.session.account.uuid)">내 문서 기여 목록</nuxt-link>
+                <nuxt-link class="dropdown-item" :to="contribution_link_discuss($store.state.session.account.uuid)">내 토론 기여 목록</nuxt-link>
+                <div class="dropdown-divider"></div>
+              <%}%>
+              <%if(session.account.type === 1) {%>
+                <a href="/member/logout?redirect=<%=encodeURIComponent(req.url)%>" class="dropdown-item">로그아웃</a>
+              <%} else {%>
+                <a href="/member/login?redirect=<%=encodeURIComponent(req.url)%>" class="dropdown-item">로그인</a>
+              <%}%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%-include('./layouts/searchForm')%>
+    </nav>
+  </div>
+  <div class="content-wrapper" :class="{ 'hide-sidebar': $store.state.localConfig['liberty.sidebar'] === 'hide' || $store.state.localConfig['liberty.sidebar'] === 'footer' }">
+    <div class="liberty-sidebar">
+      <div class="liberty-right-fixed" :class="{ 'fixed': $store.state.localConfig['liberty.sidebar'] === 'fix' }">
+        <div class="live-recent">
+          <div class="live-recent-header">
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a id="liberty-recent-tab1" class="nav-link active">최근 변경</a>
+              </li>
+            </ul>
+          </div>
+          <%-include('./layouts/recentCard')%>
+          <div class="live-recent-footer">
+            <a href="/RecentChanges" title="최근 변경내역"><span class="label label-info">더 보기</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="content" class="container-fluid liberty-content">
+      <%if(config.sitenotice) {%>
+      <div id="site-notice" class="notification">
+        <span class="label label-danger"><%-config.sitenotice%></span>
+      </div>
+      <%}%>
+      <div class="liberty-content-header">
+        <%-include('./layouts/contentTool')%>
+        <div class="title">
+          <%if(page.data.document && page.viewName !== 'error') {%>
+          <h1>
+            <a href="<%=doc_action_link(page.data.document, 'w')%>">
+              <%if(page.data.document.forceShowNamespace !== false) {%><span class="namespace"><%=page.data.document.namespace%>:</span><%}%><%=page.data.document.title%>
+            </a>
+            <%if(page.viewName === 'edit_edit_request' || page.viewName === 'edit_request') {%>
+              <small>(편집 요청)</small>
+            <%} else if(page.viewName === 'edit' && page.data.body.section) {%>
+              <small>(r<%=page.data.body.baserev%> 문단 편집)</small>
+            <%} else if(page.viewName === 'edit' && page.data.body.baserev === '0') {%>
+              <small>(새 문서 생성)</small>
+            <%} else if(page.viewName === 'edit') {%>
+              <small>(r<%=page.data.body.baserev%> 편집)</small>
+            <%} else if(page.viewName === 'history') {%>
+              <small>(역사)</small>
+            <%} else if(page.viewName === 'backlink') {%>
+              <small>(역링크)</small>
+            <%} else if(page.viewName === 'move') {%>
+              <small>(이동)</small>
+            <%} else if(page.viewName === 'delete') {%>
+              <small>(삭제)</small>
+            <%} else if(page.viewName === 'acl') {%>
+              <small>(ACL)</small>
+            <%} else if(page.viewName === 'thread') {%>
+              <small>(토론)</small>
+            <%} else if(page.viewName === 'thread_list') {%>
+              <small>(토론 목록)</small>
+            <%} else if(page.viewName === 'thread_list_close') {%>
+              <small>(닫힌 토론)</small>
+            <%} else if(page.viewName === 'edit_request_close') {%>
+              <small>(닫힌 편집 요청)</small>
+            <%} else if(page.viewName === 'diff') {%>
+              <small>(비교)</small>
+            <%} else if(page.viewName === 'revert' && page.data.rev) {%>
+              <small>(r<%=page.data.rev%>로 되돌리기)</small>
+            <%} else if(page.viewName === 'raw' && page.data.rev) {%>
+              <small>(r<%=page.data.rev%> RAW)</small>
+            <%} else if(page.viewName === 'blame' && page.data.rev) {%>
+              <small>(r<%=page.data.rev%> Blame)</small>
+            <%} else if(page.viewName === 'wiki' && page.data.rev) {%>
+              <small>(r<%=page.data.rev%> 판)</small>
+            <%}%>
+          </h1>
+          <%} else {%>
+          <h1><%=page.title%></h1>
+          <%}%>
+        </div>
+      </div>
+      <div class="liberty-content-main wiki-article">
+        <%if(page.data.edit_acl_message) {%>
+          <div class="thetree-alert thetree-alert-danger" x-cloak x-show="$store.skin.isShowACLMessage">
+            <div class="thetree-alert-content">
+              <span><%-page.data.edit_acl_message%></span>
+              <%if(requestable) {%><span><%if(page.data.edit_acl_message.includes('\n')) {%><br><%}%> 대신 <a href="<%=doc_action_link(page.data.document, 'new_edit_request')%>">편집 요청</a>을 생성할 수 있습니다.</span><%}%>
+            </div>
+            <div>
+              <a @click.prevent="$store.skin.hideEditMessage()" href="#" class="thetree-alert-close">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                  <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        <%}%>
+        <div class="thetree-alert thetree-alert-primary" x-cloak x-show="$store.state.session.user_document_discuss && $store.state.localConfig['wiki.hide_user_document_discuss'] !== $store.state.session.user_document_discuss">
+          <div class="thetree-alert-content">
+            현재 진행 중인 <a href="<%=doc_action_link(user_doc(session.account.name), 'discuss')%>">사용자 토론</a>이 있습니다.
+          </div>
+          <div>
+            <a @click.prevent="$store.state.setLocalConfig('wiki.hide_user_document_discuss', $store.state.session.user_document_discuss)" href="#" class="thetree-alert-close">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <%if(page.viewName === 'notfound' && page.data.document.namespace === '문서') {%>
+          <div class="thetree-alert">
+            <div class="thetree-alert-content">
+              '<%=page.title%>'을(를) 검색하시겠습니까?
+              <div class="float-right"><a class="thetree-link-button" href="/Search?q=<%=page.title%>">검색</a></div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        <%}%>
+        <%if(page.viewName === 'history') {%><%-include('./components/fromSelector')%><%}%>
+        <%if(typeof contentName !== 'undefined') {%>
+          <%-include(path.join(__dirname, `views/${contentName}`))%>
+        <%} else if(typeof contentHtml !== 'undefined') {%>
+          <%-contentHtml%>
+        <%}%>
+        <%if(page.viewName === 'license') {%>
+        <div>
+          <h2>Liberty skin license</h2>
+          <pre><%=libertySkinLicense%></pre>
+        </div>
+        <%}%>
+        <div class="clearfix"></div>
+      </div>
+      <div id="bottom" class="liberty-footer">
+        <%if(page.viewName === 'wiki' && page.data.date) {%>
+          <ul class="footer-info">
+            <%
+              const date = dayjs(page.data.date * 1000);
+              const isoStr = date.toISOString();
+              const dateStr = date.format('YYYY-MM-DD HH:mm:ss');
+              const timeTag = `<time datetime="${isoStr}">${dateStr}</time>`;
+            %>
+            <%if(page.data.rev) {%><li class="footer-info-lastmod">이 리비전은 <%-timeTag%>에 편집되었습니다.</li>
+            <%} else {%><li v-else class="footer-info-lastmod">이 문서는 <%-timeTag%>에 마지막으로 편집되었습니다.</li><%}%>
+            <li class="footer-info-copyright"><%-config.copyright_text%></li>
+          </ul>
+        <%}%>
+        <ul class="footer-places"><%-config.footer_html%></ul>
+        <ul class="footer-icons">
+          <li class="footer-poweredbyico">
+            <a href="//gitlab.com/librewiki/Liberty-MW-Skin">Liberty</a> | the tree
+          </li>
+        </ul>
+      </div>
+      <div x-cloak x-show="$store.state.localConfig['liberty.sidebar'] === 'footer'" class="footer-recent">
+        <%-include('./layouts/recentCard', {limit:8})%>
+        <div class="live-recent-footer">
+          <a href="/RecentChanges" title="최근 변경내역"><span class="label label-info">더 보기</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-buttons">
+    <a class="scroll-toc" href="#toc"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+    <a id="left" class="scroll-button" href="#top"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+    <a id="right" class="scroll-bottom" href="#bottom"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+<style>
+  @import "/skins/<%=skin%>/css/bootstrap.min.css";
+  @import "/skins/<%=skin%>/css/font-awesome.min.css";
+  @import "/skins/<%=skin%>/css/font/Noto Sans KR.css";
+  @import "/skins/<%=skin%>/css/default.css";
+  @import '/skins/<%=skin%>/css/default_mobile.css';
+  @import "/skins/<%=skin%>/css/dark.css";
+
+  @import "/skins/<%=skin%>/css/layouts/contentTool.css";
+  @import "/skins/<%=skin%>/css/layouts/recentCard.css";
+  @import "/skins/<%=skin%>/css/layouts/searchForm.css";
+</style>

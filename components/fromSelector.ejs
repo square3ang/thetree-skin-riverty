@@ -1,0 +1,13 @@
+<div id="fromSelector">
+  <div x-data="fromSelector" x-cloak x-show="$store.state.localConfig['liberty.rev_selector'] !== false">
+    <input x-model="until" type="checkbox" title="until">
+    <input x-model="revInput" @keydown.enter="revSearch" type="text" inputmode="numeric" pattern="\d*" class="form-control" placeholder="rev">
+    <button @click="revSearch" type="button" class="btn btn-secondary">
+      <span class="fa fa-search"></span>
+    </button>
+  </div>
+</div>
+
+<style>
+@import "/skins/<%=skin%>/css/components/fromSelector.css";
+</style>

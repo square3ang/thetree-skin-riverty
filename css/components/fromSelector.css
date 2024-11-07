@@ -1,0 +1,36 @@
+@scope (#fromSelector) {
+    div {
+        float: right;
+        margin: 0.6rem;
+    }
+
+    input[type="text"] {
+        width: 5rem;
+        display: inline-block;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 0.6rem;
+        vertical-align: middle;
+    }
+
+    button {
+        margin-left: 0.2rem;
+    }
+
+    button > .fa {
+        font-size: 0.9rem;
+    }
+
+    .theseed-dark-mode input[type="text"],
+    .theseed-dark-mode button {
+        background-color: #27292d;
+        border-color: #383b40;
+        color: #ddd;
+    }
+
+    .theseed-dark-mode button:hover {
+        background-color: #2d2f34;
+        border-color: #383b40;
+    }
+}
