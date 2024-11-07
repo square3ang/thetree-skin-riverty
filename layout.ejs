@@ -9,6 +9,19 @@ window.requestable = <%=JSON.stringify(requestable)%>;
 </script>
 <script src="/skins/<%=skin%>/js/main.js"></script>
 
+<style>
+  @import "/skins/<%=skin%>/css/bootstrap.min.css";
+  @import "/skins/<%=skin%>/css/font-awesome.min.css";
+  @import "/skins/<%=skin%>/css/font/Noto Sans KR.css";
+  @import "/skins/<%=skin%>/css/default.css";
+  @import '/skins/<%=skin%>/css/default_mobile.css';
+  @import "/skins/<%=skin%>/css/dark.css";
+
+  @import "/skins/<%=skin%>/css/layouts/contentTool.css";
+  @import "/skins/<%=skin%>/css/layouts/recentCard.css";
+  @import "/skins/<%=skin%>/css/layouts/searchForm.css";
+</style>
+
 <div class="Liberty">
   <div id="top"></div>
   <div class="nav-wrapper" :class="{ 'navbar-fixed-top': $store.state.localConfig['liberty.fixed_navbar'] }">
@@ -261,16 +274,3 @@ window.requestable = <%=JSON.stringify(requestable)%>;
     <a id="right" class="scroll-bottom" href="#bottom"><i class="fa fa-arrow-down" aria-hidden="true"></i></a>
   </div>
 </div>
-
-<style>
-  @import "/skins/<%=skin%>/css/bootstrap.min.css";
-  @import "/skins/<%=skin%>/css/font-awesome.min.css";
-  @import "/skins/<%=skin%>/css/font/Noto Sans KR.css";
-  @import "/skins/<%=skin%>/css/default.css";
-  @import '/skins/<%=skin%>/css/default_mobile.css';
-  @import "/skins/<%=skin%>/css/dark.css";
-
-  @import "/skins/<%=skin%>/css/layouts/contentTool.css";
-  @import "/skins/<%=skin%>/css/layouts/recentCard.css";
-  @import "/skins/<%=skin%>/css/layouts/searchForm.css";
-</style>
