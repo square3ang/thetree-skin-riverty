@@ -101,3 +101,6 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+
+// TODO: reset search on page move
+// if (this.$store.state.localConfig["liberty.reset_search_on_move"] !== false) this.reset();
