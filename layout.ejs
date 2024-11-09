@@ -226,12 +226,14 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           </div>
         <%}%>
         <%if(page.viewName === 'history') {%><%-include('./components/fromSelector')%><%}%>
-        <div id="content-body">
-          <%if(typeof contentName !== 'undefined') {%>
-            <%-include(path.join(__dirname, `views/${contentName}`))%>
-          <%} else if(typeof contentHtml !== 'undefined') {%>
+        <div id="content-style" :class="$store.state.currentTheme === 'dark' ? 'theseed-dark-mode' : 'theseed-white-mode'">
+          <div id="content-body">
+            <%if(typeof contentName !== 'undefined') {%>
+              <%-include(path.join(__dirname, `views/${contentName}`))%>
+            <%} else if(typeof contentHtml !== 'undefined') {%>
             <%-contentHtml%>
-          <%}%>
+            <%}%>
+          </div>
         </div>
         <%if(page.viewName === 'license') {%>
         <div>
