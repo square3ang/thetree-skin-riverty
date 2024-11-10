@@ -91,14 +91,14 @@ window.requestable = <%=JSON.stringify(requestable)%>;
               <a x-show="$store.state.currentTheme === 'dark'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'light')">라이트 테마로</a>
               <div class="dropdown-divider"></div>
               <%if(session.account.type === 1) {%>
-                <a to="/member/mypage" class="dropdown-item">내 정보</a>
-                <a :to="doc_action_link(user_doc($store.state.session.account.name), 'w')" class="dropdown-item">내 사용자 문서</a>
-                <a to="/member/starred_documents" class="dropdown-item">내 문서함</a>
+                <a href="/member/mypage" class="dropdown-item">내 정보</a>
+                <a :href="doc_action_link(user_doc($store.state.session.account.name), 'w')" class="dropdown-item">내 사용자 문서</a>
+                <a href="/member/starred_documents" class="dropdown-item">내 문서함</a>
                 <div class="dropdown-divider"></div>
               <%}%>
               <%if(session.account.uuid) {%>
-                <nuxt-link class="dropdown-item" :to="contribution_link($store.state.session.account.uuid)">내 문서 기여 목록</nuxt-link>
-                <nuxt-link class="dropdown-item" :to="contribution_link_discuss($store.state.session.account.uuid)">내 토론 기여 목록</nuxt-link>
+                <a class="dropdown-item" :href="contribution_link($store.state.session.account.uuid)">내 문서 기여 목록</a>
+                <a class="dropdown-item" :href="contribution_link_discuss($store.state.session.account.uuid)">내 토론 기여 목록</a>
                 <div class="dropdown-divider"></div>
               <%}%>
               <%if(session.account.type === 1) {%>
