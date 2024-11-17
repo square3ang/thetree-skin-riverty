@@ -76,7 +76,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           </a>
           <div class="open" x-cloak x-show="open" @click="open = false" @click.outside="open = false">
             <div class="dropdown-menu dropdown-menu-right login-dropdown-menu">
-              <%if(session.account.type === 1) {%>
+              <%if(session.account.type === UserTypes.Account) {%>
               <div class="username dropdown-item">
                 <b><%=session.account.name%></b><br>Member
               </div>
@@ -90,7 +90,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
               <a x-show="$store.state.currentTheme === 'light'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'dark')">다크 테마로</a>
               <a x-show="$store.state.currentTheme === 'dark'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'light')">라이트 테마로</a>
               <div class="dropdown-divider"></div>
-              <%if(session.account.type === 1) {%>
+              <%if(session.account.type === UserTypes.Account) {%>
                 <a href="/member/mypage" class="dropdown-item">내 정보</a>
                 <a :href="doc_action_link(user_doc($store.state.session.account.name), 'w')" class="dropdown-item">내 사용자 문서</a>
                 <a href="/member/starred_documents" class="dropdown-item">내 문서함</a>
@@ -101,7 +101,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
                 <a class="dropdown-item" :href="contribution_link_discuss($store.state.session.account.uuid)">내 토론 기여 목록</a>
                 <div class="dropdown-divider"></div>
               <%}%>
-              <%if(session.account.type === 1) {%>
+              <%if(session.account.type === UserTypes.Account) {%>
                 <a href="/member/logout" data-add-redirect class="dropdown-item">로그아웃</a>
               <%} else {%>
                 <a href="/member/login" data-add-redirect class="dropdown-item">로그인</a>
