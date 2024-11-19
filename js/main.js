@@ -72,7 +72,7 @@ document.addEventListener('alpine:init', () => {
         showEditMessage() {
             console.log('showEditMessage');
             if (this.isShowACLMessage) {
-                pjax.loadUrl(doc_action_link(page.data.document, requestable ? 'new_edit_request' : 'edit'));
+                movePage(doc_action_link(page.data.document, requestable ? 'new_edit_request' : 'edit'));
             }
             else {
                 this.isShowACLMessage = true;
