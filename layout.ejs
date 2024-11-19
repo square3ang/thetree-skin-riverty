@@ -1,5 +1,5 @@
 <%
-const requestable = page.data.editable === true && page.data.edit_acl_message && page.viewName !== 'notfound';
+const requestable = page.data.editable === true && !!page.data.edit_acl_message && page.viewName !== 'notfound';
 if(!global.libertySkinLicense) {
   global.libertySkinLicense = fs.readFileSync(`./skins/${skin}/LICENSE`).toString();
 }
