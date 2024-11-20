@@ -45,7 +45,7 @@
     .content-tools .tools-btn.btn-danger:hover,
     .content-tools .tools-btn.btn-danger:focus,
     .content-tools .tools-btn.btn-danger:active {
-        background-color: #d9534f;
+        background-color: #d9534f !important;
         border-color: #adadad;
         color: white;
     }

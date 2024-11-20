@@ -246,7 +246,8 @@ window.requestable = <%=JSON.stringify(requestable)%>;
       <div id="bottom" class="liberty-footer">
         <%if(page.viewName === 'wiki' && page.data.date) {%>
           <ul class="footer-info">
-            <%if(page.data.rev) {%><li class="footer-info-lastmod">이 리비전은 <%-globalUtils.getFullDateTag(page.data.date * 1000)%>에 편집되었습니다.</li>
+            <%const timeTag = getFullDateTag(page.data.date);%>
+            <%if(page.data.rev) {%><li class="footer-info-lastmod">이 리비전은 <%-timeTag%>에 편집되었습니다.</li>
             <%} else {%><li v-else class="footer-info-lastmod">이 문서는 <%-timeTag%>에 마지막으로 편집되었습니다.</li><%}%>
             <li class="footer-info-copyright"><%-config.copyright_text%></li>
           </ul>
