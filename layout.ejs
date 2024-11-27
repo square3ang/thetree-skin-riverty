@@ -143,7 +143,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           <%if(page.data.document && page.viewName !== 'error') {%>
           <h1>
             <a href="<%=doc_action_link(page.data.document, 'w')%>">
-              <%if(page.data.document.forceShowNamespace !== false) {%><span class="namespace"><%=page.data.document.namespace%>:</span><%}%><%=page.data.document.title%>
+              <%if(page.data.document.forceShowNamespace !== false) {%><span class="namespace"><%=page.data.document.namespace%>:</span><%}%><%=encodeURIComponent(page.data.document.title)%>
             </a>
             <%if(page.viewName === 'edit_edit_request' || page.viewName === 'edit_request') {%>
               <small>(편집 요청)</small>
@@ -219,8 +219,8 @@ window.requestable = <%=JSON.stringify(requestable)%>;
         <%if(page.viewName === 'notfound' && page.data.document.namespace === '문서') {%>
           <div class="thetree-alert">
             <div class="thetree-alert-content">
-              '<%=page.title%>'을(를) 검색하시겠습니까?
-              <div class="float-right"><a class="thetree-square-button" href="/Search?q=<%=page.title%>">검색</a></div>
+              '<%=page.data.document.title%>'을(를) 검색하시겠습니까?
+              <div class="float-right"><a class="thetree-square-button" href="/Search?q=<%=encodeURIComponent(page.data.document.title)%>">검색</a></div>
               <div class="clearfix"></div>
             </div>
           </div>
