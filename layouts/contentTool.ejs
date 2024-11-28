@@ -8,9 +8,6 @@ const contentTool = {
   get data() {
     return page.data;
   },
-  get rev() {
-    return this.data.rev || req.query.rev;
-  },
   calculate() {
     const uuid = this.data?.uuid;
     this.main = [];
@@ -60,7 +57,7 @@ const contentTool = {
               html: `<span class="fa fa-edit"></span> 편집`
             });
           this.main.push({
-            to: doc_action_link(this.data.document, 'history', this.rev ? { from: this.rev } : undefined),
+            to: doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
             title: "역사"
           });
           this.main.push({
@@ -88,7 +85,7 @@ const contentTool = {
               });
               this.menu.push({
                 class: 'admin',
-                onclick: () => this.copyUuid(this.data.user.uuid),
+                onclick: () => this.copyUuid(this.data.document.title, this.data.user.uuid),
                 title: "UUID 복사"
               });
             }
@@ -100,7 +97,7 @@ const contentTool = {
       case 'revert':
       case 'diff':
         this.main.push({
-          to: doc_action_link(this.data.document, 'history', this.rev ? { from: this.rev } : undefined),
+          to: doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
           class: 'btn-info',
           title: "역사"
         });
@@ -149,7 +146,7 @@ const contentTool = {
           html: `<span class="fa fa-edit"></span> 편집`
         });
         this.main.push({
-          to: doc_action_link(this.data.document, 'history', this.rev ? { from: this.rev } : undefined),
+          to: doc_action_link(this.data.document, 'history', this.data.rev ? { from: this.data.rev } : undefined),
           title: "역사"
         });
         this.main.push({
@@ -266,7 +263,7 @@ const contentTool = {
           });
           this.menu.push({
             class: 'admin',
-            onclick: () => this.copyUuid(this.data.account.uuid),
+            onclick: () => this.copyUuid(this.data.account.name, this.data.account.uuid),
             title: "UUID 복사"
           });
         }
