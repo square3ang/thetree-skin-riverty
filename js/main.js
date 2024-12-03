@@ -44,7 +44,7 @@ function setStyles() {
         '--liberty-brand-dark-color': selectByTheme(CONFIG['skin.liberty.brand_dark_color_1'] ?? darkenColor(brand_color()), '#16171a'),
         '--liberty-brand-bright-color': selectByTheme(CONFIG['skin.liberty.brand_bright_color_1'] ?? lightenColor(brand_color()), '#383b40'),
         '--liberty-navbar-logo-image': CONFIG['logo_image'] && `url(${CONFIG['logo_image']})`,
-        '--liberty-navbar-logo-minimum-width': '6rem',
+        '--liberty-navbar-logo-minimum-width': CONFIG['skin.liberty.navbar_logo_minimum_width'],
         '--liberty-navbar-logo-width': CONFIG['skin.liberty.navbar_logo_width'],
         '--liberty-navbar-logo-size': CONFIG['skin.liberty.navbar_logo_size'],
         '--liberty-navbar-logo-padding': CONFIG['skin.liberty.navbar_logo_padding'],
