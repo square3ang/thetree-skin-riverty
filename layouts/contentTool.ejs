@@ -12,6 +12,7 @@ const contentTool = {
     const uuid = this.data?.uuid;
     this.main = [];
     this.menu = [];
+    this.page = page;
     switch(page.viewName) {
       case 'wiki':
         if (this.data.date === null) {
