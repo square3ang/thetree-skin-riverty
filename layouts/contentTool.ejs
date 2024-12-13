@@ -24,6 +24,7 @@ const contentTool = {
             to: doc_action_link(this.data.document, 'acl') + '#namespace.read',
             title: "ACL"
           });
+          break;
         }
         else if (!uuid) {
           if (this.data.starred) this.main.push({
@@ -91,8 +92,8 @@ const contentTool = {
               });
             }
           }
+          break;
         }
-        break;
       case 'raw':
       case 'blame':
       case 'revert':
