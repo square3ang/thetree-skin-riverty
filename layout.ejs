@@ -217,7 +217,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           </div>
         </div>
         <%if(page.viewName === 'notfound' && page.data.document.namespace === '문서') {%>
-          <div class="thetree-alert">
+          <div class="thetree-alert" style="line-height:2.1rem;">
             <div class="thetree-alert-content">
               '<%=page.data.document.title%>'을(를) 검색하시겠습니까?
               <div class="float-right"><a class="thetree-square-button" href="/Search?q=<%=encodeURIComponent(page.data.document.title)%>">검색</a></div>
