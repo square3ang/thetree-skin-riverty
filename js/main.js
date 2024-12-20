@@ -86,20 +86,6 @@ document.addEventListener('alpine:init', () => {
             // this.isShowACLMessage = false;
         }
     });
-
-    Alpine.data('fromSelector', () => ({
-        until: !!query.get('until'),
-        revInput: (query.get('from') || query.get('until')) ?? '',
-        revSearch() {
-            if(!this.revInput) pjax.loadUrl(doc_action_link(page.data.document, 'history'));
-            else pjax.loadUrl(doc_action_link(page.data.document, 'history', this.until ? { until: this.revInput } : { from: this.revInput }));
-        },
-        onPageMove() {
-            // TODO: set rev input on page move
-            // this.until = !!this.$route.query.until;
-            // this.revInput = (this.$route.query.from || this.$route.query.until) ?? '';
-        }
-    }));
 });
 
 // TODO: reset search on page move, subrepo commit test
