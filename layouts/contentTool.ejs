@@ -140,7 +140,7 @@ const contentTool = {
           title: "토론"
         });
         if (this.data.edit_acl_message) this.main.push({
-          onclick: () => emit('onClickEditBtn'),
+          onclick: () => $store.skin.showEditMessage(),
           html: `<span class="fa fa-lock"></span> 편집`
         });
         else this.main.push({
