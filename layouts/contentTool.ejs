@@ -272,7 +272,7 @@ const contentTool = {
         break;
       case '':
         if (page.title === '오류') this.main.push({
-          onclick: () => location.back(),
+          onclick: () => history.back(),
           title: "이전 화면"
         });
         break;
