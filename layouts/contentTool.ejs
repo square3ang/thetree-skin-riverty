@@ -295,22 +295,24 @@ contentTool.init();
         <%}%>
       <%}%>
       <%if(contentTool.menu.length) {%>
-        <dropdown class="btn btn-secondary tools-btn">
-          <div>
-            <div class="dropdown-toggle"><span class="caret"></span></div>
+        <div class="dropdown btn btn-secondary tools-btn" x-data="{ open: false }">
+          <div @click="open = !open">
+            <div class="dropdown-toggle">
+              <span class="caret"></span>
+            </div>
           </div>
-          <div class="open">
+          <div class="open" x-cloak x-show="open" @click="open = false" @click.outside="open = false">
             <div class="dropdown-menu dropdown-menu-right" role="menu">
               <%for(let m of contentTool.menu) {%>
-                <%if(m.onclick) {%>
-                  <a @click.prevent="<%=m.onclick.toString()%>" href="#" class="<%=['dropdown-item', m.class].filter(a=>a).join(' ')%>"><%=m.title%></a>
-                <%} else {%>
-                  <a href="<%=m.to%>" class="<%=['dropdown-item', m.class].filter(a=>a).join(' ')%>"><%=m.title%></a>
-                <%}%>
+              <%if(m.onclick) {%>
+              <a @click.prevent="<%=m.onclick.toString()%>" href="#" class="<%=['dropdown-item', m.class].filter(a=>a).join(' ')%>"><%=m.title%></a>
+              <%} else {%>
+              <a href="<%=m.to%>" class="<%=['dropdown-item', m.class].filter(a=>a).join(' ')%>"><%=m.title%></a>
+              <%}%>
               <%}%>
             </div>
           </div>
-        </dropdown>
+        </div>
       <%}%>
     </div>
   </div>
