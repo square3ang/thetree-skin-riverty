@@ -193,7 +193,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           <div class="thetree-alert thetree-alert-danger" x-cloak x-show="$store.skin.isShowACLMessage">
             <div class="thetree-alert-content">
               <span><%-page.data.edit_acl_message%></span>
-              <%if(requestable) {%><span><%if(page.data.edit_acl_message.includes('\n')) {%><br><%}%> 대신 <a href="<%=doc_action_link(page.data.document, 'new_edit_request')%>">편집 요청</a>을 생성할 수 있습니다.</span><%}%>
+              <%if(requestable) {%><span><%if(page.data.edit_acl_message.includes('<br>')) {%><br><%}%> 대신 <a href="<%=doc_action_link(page.data.document, 'new_edit_request')%>">편집 요청</a>을 생성할 수 있습니다.</span><%}%>
             </div>
             <div>
               <a @click.prevent="$store.skin.hideEditMessage()" href="#" class="thetree-alert-close">
