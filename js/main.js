@@ -80,12 +80,12 @@ document.addEventListener('alpine:init', () => {
         },
         hideEditMessage() {
             this.isShowACLMessage = false;
-        },
-        onPageMove() {
-            // TODO: set isShowACLMessage to false on page move
-            // this.isShowACLMessage = false;
         }
     });
+});
+
+document.addEventListener('thetree:pageLoad', () => {
+    Alpine.store('skin').hideEditMessage();
 });
 
 document.addEventListener('thetree:configChange', () => {
