@@ -88,5 +88,9 @@ document.addEventListener('alpine:init', () => {
     });
 });
 
+document.addEventListener('thetree:configChange', () => {
+    setStyles();
+});
+
 // TODO: reset search on page move, subrepo commit test
 // if (this.$store.state.localConfig["liberty.reset_search_on_move"] !== false) this.reset();
