@@ -71,7 +71,7 @@ const contentTool = {
               to: contribution_link(this.data.user.uuid),
               title: "기여 목록"
             });
-            if (session.quick_block && State.localConfig['liberty.admin_convenience'] !== false) {
+            if (session.quick_block) {
               this.menu.push({
                 class: 'admin',
                 onclick: () => this.openQuickACLGroup({
@@ -243,7 +243,7 @@ const contentTool = {
           class: this.data.account.type === UserTypes.Account ? '' : 'disabled',
           title: "사용자 문서"
         });
-        if (State.session.quick_block && State.localConfig['liberty.admin_convenience'] !== false) {
+        if (session.quick_block) {
           if (this.data.account.type !== UserTypes.Deleted) this.menu.push({
             class: 'admin',
             onclick: () => this.openQuickACLGroup({
