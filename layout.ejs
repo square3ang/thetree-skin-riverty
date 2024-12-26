@@ -4,7 +4,7 @@ if(!global.libertySkinLicense) {
   global.libertySkinLicense = fs.readFileSync(`./skins/${skin}/LICENSE`).toString();
 }
 %>
-<script>
+<script nonce="<%=cspNonce%>">
 window.requestable = <%=JSON.stringify(requestable)%>;
 </script>
 <script src="/skins/<%=skin%>/js/main.js"></script>
