@@ -86,11 +86,14 @@ document.addEventListener('alpine:init', () => {
 
 document.addEventListener('thetree:pageLoad', () => {
     Alpine.store('skin').hideEditMessage();
+
+    if(State.getLocalConfig('liberty.reset_search_on_move') !== false) {
+        const searchInput = document.getElementById('searchInput');
+        searchInput.value = '';
+        searchInput.dispatchEvent(new Event('input'));
+    }
 });
 
 document.addEventListener('thetree:configChange', () => {
     setStyles();
 });
-
-// TODO: reset search on page move, subrepo commit test
-// if (this.$store.state.localConfig["liberty.reset_search_on_move"] !== false) this.reset();
