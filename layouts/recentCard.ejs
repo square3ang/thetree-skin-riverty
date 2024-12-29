@@ -21,7 +21,7 @@
             <div x-show="$store.state.recent.length > 0">
                 <template x-for="(r,i) in $store.state.recent.slice(0, <%=typeof limit === 'undefined' ? 15 : limit%>)" :key="i">
                     <li>
-                        <a class="recent-item" :class="{ 'removed': r.status === 'delete' }" :key="r.document" :href="doc_action_link(r.document, 'w')">
+                        <a class="recent-item" :class="{ 'removed': r.status === 'delete' }" :key="r.document" :href="doc_action_link(r.document, 'w')" @click="$store.state.aClickHandler">
                             [<time data-type="keep" :datetime="new Date(r.date * 1000).toISOString()" x-text="getDateStr(r.date * 1000)"></time>] <span x-text="r.document"></span>
                         </a>
                     </li>
