@@ -238,6 +238,7 @@ const contentTool = {
         break;
       case 'contribution':
       case 'contribution_discuss':
+      case 'contribution_edit_request':
         this.main.push({
           to: this.data.account.type === UserTypes.Account ? doc_action_link(user_doc(this.data.account.name), 'w') : '',
           class: this.data.account.type === UserTypes.Account ? '' : 'disabled',
