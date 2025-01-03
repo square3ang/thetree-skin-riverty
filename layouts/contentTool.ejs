@@ -74,9 +74,9 @@ const contentTool = {
             if (session.quick_block) {
               this.menu.push({
                 class: 'admin',
-                onclick: () => this.openQuickACLGroup({
-                  username: this.data.document.title,
-                  note: `${this.doc_fulltitle(this.data.document)} 긴급차단`
+                onclick: () => State.openQuickACLGroup({
+                  username: page.data.document.title,
+                  note: `${doc_fulltitle(page.data.document)} 긴급차단`
                 }),
                 title: "사용자 차단"
               });
@@ -244,28 +244,28 @@ const contentTool = {
           title: "사용자 문서"
         });
         if (session.quick_block) {
-          if (this.data.account.type !== UserTypes.Deleted) this.menu.push({
+          if (page.data.account.type !== UserTypes.Deleted) this.menu.push({
             class: 'admin',
-            onclick: () => this.openQuickACLGroup({
-              username: this.data.account.type === UserTypes.Account ? "".concat(this.data.account.name) : undefined,
-              ip: this.data.account.type === UserTypes.IP ? this.data.account.name + '/' + (this.data.account.name.indexOf('.') === -1 ? "128" : '32') : undefined,
+            onclick: () => State.openQuickACLGroup({
+              username: page.data.account.type === 1 ? "".concat(page.data.account.name) : undefined,
+              ip: page.data.account.type === 0 ? page.data.account.name + '/' + (page.data.account.name.indexOf('.') === -1 ? "128" : '32') : undefined,
               note: '기여 목록 긴급차단'
             }),
             title: "사용자 차단"
           });
-          if (this.data.account.type === UserTypes.Deleted && this.data.account.uuid) this.menu.push({
-            to: doc_action_link(user_doc('*' + this.data.account.uuid), 'w'),
+          if (page.data.account.type === -1 && page.data.account.uuid) this.menu.push({
+            to: doc_action_link(user_doc('*' + page.data.account.uuid), 'w'),
             class: 'admin',
             title: "삭제된 사용자 문서"
           });
           this.menu.push({
             class: 'admin',
-            to: `/BlockHistory?query=${this.data.account.uuid}&target=text`,
+            to: `/BlockHistory?query=${page.data.account.uuid}&target=text`,
             title: "차단 내역"
           });
           this.menu.push({
             class: 'admin',
-            onclick: () => this.copyUuid(this.data.account.name, this.data.account.uuid),
+            onclick: () => navigator.clipboard.writeText(page.data.account.uuid),
             title: "UUID 복사"
           });
         }
