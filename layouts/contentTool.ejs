@@ -87,7 +87,7 @@ const contentTool = {
               });
               this.menu.push({
                 class: 'admin',
-                onclick: () => this.copyUuid(this.data.document.title, this.data.user.uuid),
+                onclick: () => navigator.clipboard.writeText(page.data.user.uuid),
                 title: "UUID 복사"
               });
             }
