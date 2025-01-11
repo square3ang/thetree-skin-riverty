@@ -70,7 +70,6 @@ document.addEventListener('alpine:init', () => {
     Alpine.store('skin', {
         isShowEditMessage: false,
         showEditMessage() {
-            console.log('showEditMessage');
             if (this.isShowACLMessage) {
                 movePage(doc_action_link(page.data.document, requestable ? 'new_edit_request' : 'edit'));
             }
