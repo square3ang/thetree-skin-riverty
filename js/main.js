@@ -1,12 +1,3 @@
-window.defaultConfig = {
-    ...window.defaultConfig,
-    'liberty.fixed_navbar': false,
-    'liberty.reset_search_on_move': true,
-    'liberty.rev_selector': true,
-    'liberty.rev_convenience': true,
-    'liberty.admin_convenience': true
-}
-
 function darkenColor(hex, percent=50) {
     let r = parseInt(hex.substring(1, 3), 16);
     let g = parseInt(hex.substring(3, 5), 16);

@@ -284,9 +284,8 @@ const contentTool = {
 contentTool.init();
 %>
 
-<!--<div id="content-tools">-->
 <%if(contentTool.main.length) {%>
-  <div class="content-tools">
+  <div class="content-tools" :class="$store.state.getLocalConfig('liberty.admin_convenience') ? '' : 'no-admin-convenience'">
     <div class="btn-group">
       <%for(let l of contentTool.main) {%>
         <%if(l.onclick) {%>
@@ -318,4 +317,3 @@ contentTool.init();
     </div>
   </div>
 <%}%>
-<!--</div>-->
