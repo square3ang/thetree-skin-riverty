@@ -86,7 +86,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
               </div>
               <%}%>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item" @click.prevent="openSettingModal">설정</a>
+              <a href="#" class="dropdown-item" @click.prevent="$store.state.openSettingModal">설정</a>
               <a x-show="$store.state.currentTheme === 'light'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'dark')">다크 테마로</a>
               <a x-show="$store.state.currentTheme === 'dark'" href="#" class="dropdown-item" @click.prevent="$store.state.setLocalConfig('wiki.theme', 'light')">라이트 테마로</a>
               <div class="dropdown-divider"></div>
