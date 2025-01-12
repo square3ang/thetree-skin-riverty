@@ -53,10 +53,6 @@ function setStyles() {
 }
 setStyles();
 
-function openSettingModal() {
-    console.log('TODO: config');
-}
-
 document.addEventListener('alpine:init', () => {
     Alpine.store('skin', {
         isShowEditMessage: false,
