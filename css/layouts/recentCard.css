@@ -1,4 +1,4 @@
-@scope (#recent) {
+@scope (.recent-card) {
     .live-recent-content {
         background-color: #fff;
         border: 1px solid #e1e8ed;
@@ -16,10 +16,6 @@
         padding: 0.2rem 0.6rem;
     }
 
-    :global(.theseed-dark-mode) .live-recent-content .live-recent-list li {
-        border-color: #777;
-    }
-
     .live-recent-content .live-recent-list li:last-child {
         border-bottom: none;
     }
@@ -27,10 +23,6 @@
     .live-recent-content .live-recent-list .recent-item {
         font-size: 0.80rem;
         color: #373a3c;
-    }
-
-    :global(.theseed-dark-mode) .live-recent-content .live-recent-list .recent-item {
-        color: #ddd;
     }
 
     .live-recent-content .live-recent-list .recent-item .new {
@@ -45,4 +37,12 @@
     .live-recent-content .live-recent-list .recent-item.removed:hover {
         text-decoration: underline !important;
     }
+}
+
+.theseed-dark-mode .recent-card .live-recent-content .live-recent-list li {
+    border-color: #777;
+}
+
+.theseed-dark-mode .recent-card .live-recent-content .live-recent-list .recent-item {
+    color: #ddd;
 }
