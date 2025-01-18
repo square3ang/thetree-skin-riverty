@@ -40,8 +40,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
         <li class="nav-item" x-data="{ open: false }">
           <div class="dropdown">
             <a class="nav-link dropdown-toggle dropdown-toggle-fix" href="#" @click.prevent="open = !open">
-              <span class="fa fa-gear"></span><span class="hide-title">도구</span>
-            </a>
+              <span class="fa fa-gear"></span><span class="hide-title">도구</span></a>
             <div class="open" x-cloak x-show="open" @click="open = false" @click.outside="open = false">
               <div class="dropdown-menu" role="menu">
                 <a href="/NeededPages" class="dropdown-item">작성이 필요한 문서</a>
