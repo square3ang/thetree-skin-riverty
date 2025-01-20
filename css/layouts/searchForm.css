@@ -25,15 +25,15 @@
         word-break: break-all;
     }
 
-    .theseed-dark-mode .v-autocomplete-list-item {
-        color: #ddd;
-    }
-
     .v-autocomplete-list-item.v-autocomplete-item-active {
         background-color: #f3f6fa;
     }
+}
 
-    .theseed-dark-mode .v-autocomplete-list-item.v-autocomplete-item-active {
-        background-color: #383b40;
-    }
+.theseed-dark-mode #search .v-autocomplete-list-item {
+    color: #ddd;
+}
+
+.theseed-dark-mode #search .v-autocomplete-list-item.v-autocomplete-item-active {
+    background-color: #383b40;
 }
