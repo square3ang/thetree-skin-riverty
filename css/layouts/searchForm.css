@@ -13,11 +13,6 @@
         }
     }
 
-    .theseed-dark-mode .v-autocomplete-list {
-        background-color: #2d2f34;
-        border: 1px solid #383b40;
-    }
-
     .v-autocomplete-list-item {
         cursor: pointer;
         color: #373a3c;
@@ -28,6 +23,11 @@
     .v-autocomplete-list-item.v-autocomplete-item-active {
         background-color: #f3f6fa;
     }
+}
+
+.theseed-dark-mode #search .v-autocomplete-list {
+    background-color: #2d2f34;
+    border: 1px solid #383b40;
 }
 
 .theseed-dark-mode #search .v-autocomplete-list-item {
