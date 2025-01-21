@@ -224,8 +224,8 @@ window.requestable = <%=JSON.stringify(requestable)%>;
             </div>
           </div>
         <%}%>
-        <div id="content-style">
-          <div id="content-body" :class="$store.state.currentTheme === 'dark' ? 'theseed-dark-mode' : 'theseed-white-mode'">
+        <div id="content-style" class="content-style">
+          <div id="content-body" class="content-body" :class="$store.state.currentTheme === 'dark' ? 'theseed-dark-mode' : 'theseed-white-mode'">
             <%-contentHtml%>
           </div>
         </div>
