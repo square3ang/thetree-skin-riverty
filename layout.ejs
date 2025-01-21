@@ -1,8 +1,5 @@
 <%
 const requestable = page.data.editable === true && !!page.data.edit_acl_message && page.viewName !== 'notfound';
-if(!global.libertySkinLicense) {
-  global.libertySkinLicense = fs.readFileSync(`./skins/${skin}/LICENSE`).toString();
-}
 %>
 <script nonce="<%=cspNonce%>">
 window.requestable = <%=JSON.stringify(requestable)%>;
@@ -232,7 +229,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
         <%if(page.viewName === 'license') {%>
         <div>
           <h2>Liberty skin license</h2>
-          <pre><%=libertySkinLicense%></pre>
+          <pre><%=getSkinFile('LICENSE')%></pre>
         </div>
         <%}%>
         <div class="clearfix"></div>
