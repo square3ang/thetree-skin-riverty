@@ -73,6 +73,10 @@
     .dropdown-item.admin:hover {
         background-color: #ab0000;
     }
+
+    .btn-group {
+        font-size: 0;
+    }
 }
 
 .theseed-dark-mode .content-tools .tools-btn:active,
