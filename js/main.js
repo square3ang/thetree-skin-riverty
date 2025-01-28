@@ -23,7 +23,7 @@ function lightenColor(hex, percent=50) {
 }
 
 function selectByTheme(light, dark) {
-    return localConfig['wiki.theme'] === 'dark' ? dark : light;
+    return getLocalConfig('wiki.theme') === 'dark' ? dark : light;
 }
 
 const brand_color = () => selectByTheme(CONFIG['theme_color'] ?? '#4188f1', '#2d2f34');
