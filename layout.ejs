@@ -240,7 +240,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
             <%const timeTag = getFullDateTag(page.data.date);%>
             <%if(page.data.rev) {%><li class="footer-info-lastmod">이 리비전은 <%-timeTag%>에 편집되었습니다.</li>
             <%} else {%><li v-else class="footer-info-lastmod">이 문서는 <%-timeTag%>에 마지막으로 편집되었습니다.</li><%}%>
-            <li class="footer-info-copyright"><%-config.copyright_text%></li>
+            <li class="footer-info-copyright"><%-copyright_text%></li>
           </ul>
         <%}%>
         <ul class="footer-places"><%-config.footer_html%></ul>
