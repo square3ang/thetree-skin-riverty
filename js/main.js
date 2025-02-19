@@ -26,7 +26,7 @@ function selectByTheme(light, dark) {
     return getLocalConfig('wiki.theme') === 'dark' ? dark : light;
 }
 
-const brand_color = () => selectByTheme(CONFIG['theme_color'] ?? '#4188f1', '#2d2f34');
+const brand_color = () => selectByTheme(CONFIG['skin.liberty.brand_color_1'] ?? CONFIG['theme_color'] ?? '#4188f1', '#2d2f34');
 
 const style = document.createElement('style');
 function setStyles() {
