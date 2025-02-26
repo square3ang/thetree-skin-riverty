@@ -95,6 +95,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
               <%if(session.account.uuid) {%>
                 <a class="dropdown-item" :href="contribution_link($store.state.session.account.uuid)">내 문서 기여 목록</a>
                 <a class="dropdown-item" :href="contribution_link_discuss($store.state.session.account.uuid)">내 토론 기여 목록</a>
+                <a class="dropdown-item" :href="contribution_link_edit_request($store.state.session.account.uuid)">내 편집 요청 기여 목록</a>
                 <div class="dropdown-divider"></div>
               <%}%>
               <%if(session.account.type === UserTypes.Account) {%>
