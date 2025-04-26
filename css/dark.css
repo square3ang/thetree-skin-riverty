@@ -1,6 +1,6 @@
 body.thetree-dark-mode .Liberty,
 body.thetree-dark-mode {
-	background-color: #222;
+	background-color: #2e3033;
 	color-scheme: dark;
 	color: #ddd;
 }
@@ -10,7 +10,7 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-header {
-	background-color: #222;
+	background-color: #2e3033;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-header .title > h1 {
@@ -18,12 +18,12 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-main {
-	background-color: #222;
+	background-color: #2e3033;
 	color: #ddd;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-footer {
-	background-color: #222;
+	background-color: #2e3033;
 	color: #ddd;
 }
 
@@ -45,12 +45,12 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .btn.btn-secondary.tools-btn {
-	background: #222;
+	background: #2e3033;
 	color: #ddd;
 }
 
 .thetree-dark-mode button.btn.btn-secondary.tools-btn.dropdown-toggle {
-	background: #222;
+	background: #2e3033;
 	color: #ddd;
 }
 
@@ -84,7 +84,7 @@ body.thetree-dark-mode {
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link:active,
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link:focus,
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item .nav-link:hover {
-	background: #222;
+	background: #2e3033;
 	color: #ddd;
 }
 
@@ -93,11 +93,11 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode ul#live-recent-list {
-	background-color: #222;
+	background-color: #2e3033;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer {
-	background-color: #222;
+	background-color: #2e3033;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer .label {
@@ -109,7 +109,7 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .footer-recent .live-recent-footer {
-	background-color: #222;
+	background-color: #2e3033;
 }
 
 .thetree-dark-mode .dropdown-menu {
@@ -125,7 +125,7 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .Liberty .nav-wrapper .navbar .form-inline .form-control {
-	background-color: #222;
+	background-color: #2e3033;
 	color: #ddd;
 }
 
@@ -134,7 +134,7 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .Liberty .nav-wrapper .navbar .form-inline .btn {
-	background-color: #222;
+	background-color: #2e3033;
 	color: #ddd;
 }
 
@@ -153,135 +153,139 @@ body.thetree-dark-mode {
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-content {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-content .live-recent-list li {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-header {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-main {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .footer-recent {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .footer-recent .live-recent-footer {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-footer {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .dropdown-menu {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .dropdown-divider {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode pre {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode textarea {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode hr {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .nav-wrapper .navbar .form-inline .form-control {
-    border-color: #505050;
+    border-color: #444;
 }
 
 
 .thetree-dark-mode .Liberty .nav-wrapper .navbar .form-inline .form-control:focus {
-    border-right-color: #505050;
+    border-right-color: #444;
 }
 
 .thetree-dark-mode .Liberty .nav-wrapper .navbar .navbar-login .profile-img {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:before {
-    border-bottom-color: #505050;
+    border-bottom-color: #444;
 }
 
 .thetree-dark-mode .Liberty .nav-wrapper .navbar .navbar-login .login-dropdown-menu:after {
-    border-bottom-color: #505050;
+    border-bottom-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-header .nav .nav-item {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-content {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-content .live-recent-list li {
-    border-bottom-color: #505050;
+    border-bottom-color: #444;
 }
 .thetree-dark-mode .Liberty .content-wrapper .liberty-sidebar .liberty-right-fixed .live-recent .live-recent-footer {
-    border-color: #505050;
+    border-color: #444;
 }
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-header {
-    border-color: #505050;
+    border-color: #444;
 }
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-main {
-    border-left-color: #505050;
-	border-right-color: #505050;
+    border-left-color: #444;
+	border-right-color: #444;
 }
 .thetree-dark-mode .Liberty .content-wrapper .footer-recent {
-    border-color: #505050;
+    border-color: #444;
 }
 .thetree-dark-mode .Liberty .content-wrapper .footer-recent .live-recent-footer {
-	border-color: #505050;
+	border-color: #444;
 }
 .thetree-dark-mode .Liberty .content-wrapper .liberty-footer {
-    border-color: #505050;
+    border-color: #444;
 }
 .thetree-dark-mode .dropdown-menu {
-    border-color: #505050;
+    border-color: #444;
 }
 .thetree-dark-mode .dropdown-divider {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .btn-secondary {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .Liberty .content-wrapper .liberty-content .liberty-content-header .content-tools {
-	border-top-color: #505050;
+	border-top-color: #444;
 }
 
 .thetree-dark-mode .category-list {
-    border-color: #505050;
+    border-color: #444;
 }
 
 .thetree-dark-mode .wiki-content .wiki-macro-toc {
-	border-color: #505050;
+	border-color: #444;
 }
 
 .thetree-dark-mode .wiki-content h1.wiki-heading,.wiki-content h2.wiki-heading,.wiki-content h3.wiki-heading,.wiki-content h4.wiki-heading,.wiki-content h5.wiki-heading,.wiki-content h6.wiki-heading {
-	border-color: #505050;
+	border-color: #444;
+}
+
+.thetree-dark-mode .recent-card .live-recent-content {
+	border-color: #444;
 }
