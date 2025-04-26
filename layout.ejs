@@ -21,7 +21,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
 
 <div class="Liberty">
   <div id="top"></div>
-  <div class="nav-wrapper" :class="{ 'navbar-fixed-top': $store.state.localConfig['liberty.fixed_navbar'] }">
+  <div class="nav-wrapper" :class="{ 'navbar-fixed-top': $store.state.localConfig['riverty.fixed_navbar'] }">
     <nav class="navbar navbar-dark">
       <a class="navbar-brand" href="/"><%=config.logo_text%></a>
       <ul class="nav navbar-nav">
@@ -113,7 +113,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
   </div>
   <div class="content-wrapper" :class="{ 'hide-sidebar': $store.state.localConfig['liberty.sidebar'] === 'hide' || $store.state.localConfig['liberty.sidebar'] === 'footer' }">
     <div class="liberty-sidebar">
-      <div class="liberty-right-fixed" :class="{ 'fixed': $store.state.localConfig['liberty.sidebar'] === 'fix' }">
+      <div class="liberty-right-fixed" :class="{ 'fixed': $store.state.localConfig['riverty.sidebar'] === 'fix' }">
         <div class="live-recent">
           <div class="live-recent-header">
             <ul class="nav nav-tabs">
@@ -252,7 +252,7 @@ window.requestable = <%=JSON.stringify(requestable)%>;
           </li>
         </ul>
       </div>
-      <div x-cloak x-show="$store.state.localConfig['liberty.sidebar'] === 'footer'" class="footer-recent">
+      <div x-cloak x-show="$store.state.localConfig['riverty.sidebar'] === 'footer'" class="footer-recent">
         <%-include('./layouts/recentCard', {limit:8})%>
         <div class="live-recent-footer">
           <a href="/RecentChanges" title="최근 변경내역"><span class="label label-info">더 보기</span></a>
